@@ -14,7 +14,7 @@ colorama.init(autoreset=False)
 steps = 100
 print("                                                     Loading")
 for _ in tqdm(range(steps), bar_format="{l_bar}{bar}|"):
-    time.sleep(0.03)
+    time.sleep(0.025)
 print("                                               Loading is complete.\n")
 
 print("Welcome To FM.OS [Version 1.0]\nType 'Help' For A List Of Commands.\n")
@@ -47,6 +47,7 @@ while True:
             print("tpkill    - Terminate a process by PID")
             print("sysinfo   - Show system information")
             print("wifi      - Checking WiFi connection status")
+            print("wifia     - Show a list of nearby Wi-Fi networks")
             print("echo      - Print a custom message")
             print("print     - Print a custom message")
             print("color     - Change text and background colors")
@@ -162,6 +163,11 @@ while True:
                 print(output)
             else:
                 print("Not connected to any Wi-Fi network.")
+
+        case "wifia":
+            wifia = subprocess.check_output(['netsh', 'wlan', 'show', 'network']).decode('utf-8')
+            print("Scan Wi-Fi:\n")
+            print(wifia)
 
         case "echo" | "print":
             ep = input("ep>> ")
