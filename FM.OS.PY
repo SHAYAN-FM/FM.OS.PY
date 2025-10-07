@@ -4,6 +4,7 @@ import time
 import psutil
 import datetime
 import platform
+import subprocess
 import playsound
 from tqdm import tqdm
 import colorama
@@ -25,26 +26,31 @@ while True:
     match command:
         case "help":
             print("\nList of available commands:\n")
-            print("help     - Show this list of commands")
-            print("shutdown - Exit the program")
-            print("clear    - Clear the terminal screen")
-            print("cls      - Clear the terminal screen")
-            print("calc     - Perform simple calculations")
-            print("time     - Display the current date and time")
-            print("ls       - List files and directories in the current folder")
-            print("openf    - Open a file by specifying its name")
-            print("addf     - Add a new file with content")
-            print("pcontentf- Update content of an existing file")
-            print("renamef  - Rename an existing file")
-            print("readf    - Read and display the content of a text file")
-            print("removef  - Delete an existing file")
-            print("plays    - Play a song by specifying its name")
-            print("task     - Display running processes")
-            print("tkill    - Terminate a process by PID")
-            print("sysinfo  - Show system information")
-            print("echo     - Print a custom message")
-            print("color    - Change text and background colors")
-            print("FM.OS - Show FM.OS operating system specifications")
+            print("help      - Show this list of commands")
+            print("shutdown  - Exit the program")
+            print("clear     - Clear the terminal screen")
+            print("cls       - Clear the terminal screen")
+            print("calc      - Perform simple calculations")
+            print("time      - Display the current date and time")
+            print("date      - Display the current date and time")
+            print("ls        - List files and directories in the current folder")
+            print("dit       - List files and directories in the current folder")
+            print("gci       - List files and directories in the current folder")
+            print("openf     - Open a file by specifying its name")
+            print("addf      - Add a new file with content")
+            print("pcontentf - Update content of an existing file")
+            print("renamef   - Rename an existing file")
+            print("readf     - Read and display the content of a text file")
+            print("removef   - Delete an existing file")
+            print("plays     - Play a song by specifying its name")
+            print("task      - Display running processes")
+            print("tpkill    - Terminate a process by PID")
+            print("sysinfo   - Show system information")
+            print("wifi      - Checking WiFi connection status")
+            print("echo      - Print a custom message")
+            print("print     - Print a custom message")
+            print("color     - Change text and background colors")
+            print("FM.OS     - Show FM.OS operating system specifications")
 
         case "shutdown":
             print("Shutting Down FM.OS...")
@@ -59,10 +65,10 @@ while True:
             result = eval(calc)
             print(f"Result : {result}")
 
-        case "time":
+        case "time" | "date":
             print(f"Present time: {datetime.datetime.now()}")
 
-        case "ls":
+        case "ls" | "dir" | "gci":
             ls = os.listdir()
             for item in ls:
                 print(item)
@@ -131,7 +137,7 @@ while True:
             for proc in psutil.process_iter(['pid', 'name']):
                 print(proc.info)
 
-        case "tkill":
+        case "tpkill":
             pidtk = input("PIDtk>> ")
             if pidtk.isdigit():
                 p = psutil.Process(int(pidtk))
@@ -143,17 +149,23 @@ while True:
         case "sysinfo":
             print("System Info:")
             print(f"OS: {platform.system()} {platform.release()}")
-            print("Total Memory (RAM):", psutil.virtual_memory().total / (1024 ** 3), "GB")
-            print("Used Memory (RAM):", psutil.virtual_memory().used / (1024 ** 3), "GB")
-            print("Memory Usage Percentage (RAM):", psutil.virtual_memory().percent, "%")
-            print("Total Swap Memory:", psutil.swap_memory().total / (1024 ** 3), "GB")
-            print("Used Swap Memory:", psutil.swap_memory().used / (1024 ** 3), "GB")
-            print("Swap Memory Usage Percentage:", psutil.swap_memory().percent, "%") 
+            print(f"Total Memory (RAM): {psutil.virtual_memory().total / (1024 ** 3):.2f} GB")
+            print(f"Used Memory (RAM): {psutil.virtual_memory().used / (1024 ** 3):.2f} GB")
+            print(f"Memory Usage Percentage (RAM): {psutil.virtual_memory().percent}%")
+            print(f"Total Swap Memory: {psutil.swap_memory().total / (1024 ** 3):.2f} GB")
+            print(f"Used Swap Memory: {psutil.swap_memory().used / (1024 ** 3):.2f} GB")
+            print(f"Swap Memory Usage Percentage: {psutil.swap_memory().percent}%")
 
+        case "wifi":
+            output = subprocess.check_output("netsh wlan show interfaces", shell = True , text = True)
+            if "SSID" in output:
+                print(output)
+            else:
+                print("Not connected to any Wi-Fi network.")
 
-        case "echo":
-            echo = input("echo>> ")
-            print(echo)
+        case "echo" | "print":
+            ep = input("ep>> ")
+            print(ep)
 
         case "color":
             colort = Fore.RESET
@@ -181,7 +193,7 @@ while True:
                 continue
             print(colort + colorb + "Color updated!\n")
 
-        case "program_specifications":
+        case "FM.OS":
             print("The name of the operating system : FM.OS")
             print("Operating system version : 1.0")
             print("Operating system manufacturer name : SHAYAN-FM")
