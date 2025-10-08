@@ -1,3 +1,5 @@
+#PASS WORD = 710
+
 import os
 import sys
 import time
@@ -11,10 +13,18 @@ import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=False)
 
+pass_word = input("                                                  Pass Word>> ")
+if pass_word == "710":
+    pass
+else:
+    print("                                                 Wrong Pass_Word!")
+    time.sleep(1.5)
+    sys.exit()
+
 steps = 100
 print("                                                     Loading")
 for _ in tqdm(range(steps), bar_format="{l_bar}{bar}|"):
-    time.sleep(0.025)
+    time.sleep(0.015)
 print("                                               Loading is complete.\n")
 
 print("Welcome To FM.OS [Version 1.0]\nType 'Help' For A List Of Commands.\n")
@@ -51,7 +61,7 @@ while True:
             print("echo      - Print a custom message")
             print("print     - Print a custom message")
             print("color     - Change text and background colors")
-            print("FM.OS     - Show FM.OS operating system specifications")
+            print("os        - Show FM.OS operating system specifications")
 
         case "shutdown":
             print("Shutting Down FM.OS...")
@@ -123,7 +133,7 @@ while True:
                 os.remove(filetd)
                 print(f"Success: File '{filetd}' has been deleted.")
             else:
-                print(f"ّFile {filetd} does not exist.")
+                print(f"File {filetd} does not exist.")
         
         case "plays":
             song_name = input("Song_name>> ")
@@ -199,7 +209,7 @@ while True:
                 continue
             print(colort + colorb + "Color updated!\n")
 
-        case "FM.OS":
+        case "os":
             print("The name of the operating system : FM.OS")
             print("Operating system version : 1.0")
             print("Operating system manufacturer name : SHAYAN-FM")
