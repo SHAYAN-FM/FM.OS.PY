@@ -1,5 +1,6 @@
 #PASS WORD = 710
 
+
 import os
 import sys
 import time
@@ -32,6 +33,7 @@ print("Welcome To FM.OS [Version 1.0]\nType 'Help' For A List Of Commands.\n")
 while True:
     user_input = input(">>> ")
     command = user_input.lower()
+    command = user_input.strip()
 
     match command:
         case "help":
@@ -54,7 +56,7 @@ while True:
             print("removef   - Delete an existing file")
             print("plays     - Play a song by specifying its name")
             print("task      - Display running processes")
-            print("tpkill    - Terminate a process by PID")
+            print("pidkill    - Terminate a process by PID")
             print("sysinfo   - Show system information")
             print("wifi      - Checking WiFi connection status")
             print("wifia     - Show a list of nearby Wi-Fi networks")
@@ -148,7 +150,7 @@ while True:
             for proc in psutil.process_iter(['pid', 'name']):
                 print(proc.info)
 
-        case "tpkill":
+        case "pidkill":
             pidtk = input("PIDtk>> ")
             if pidtk.isdigit():
                 p = psutil.Process(int(pidtk))
