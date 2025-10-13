@@ -216,5 +216,8 @@ while True:
             print("Operating system version : 1.0")
             print("Operating system manufacturer name : SHAYAN-FM")
 
+        case "":
+            pass
+
         case _:
             print(f"Command Not Found: {command}\n")
