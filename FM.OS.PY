@@ -32,8 +32,7 @@ print("Welcome To FM.OS [Version 1.0]\nType 'Help' For A List Of Commands.\n")
 
 while True:
     user_input = input(">>> ")
-    command = user_input.lower()
-    command = user_input.strip()
+    command = user_input.strip().lower()
 
     match command:
         case "help":
@@ -221,3 +220,4 @@ while True:
 
         case _:
             print(f"Command Not Found: {command}\n")
+
