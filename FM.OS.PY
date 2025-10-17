@@ -5,6 +5,8 @@ import os
 import sys
 import time
 import psutil
+import pyttsx3
+import winsound
 import datetime
 import platform
 import subprocess
@@ -16,7 +18,7 @@ colorama.init(autoreset=False)
 
 pass_word = input("                                                  Pass Word>> ")
 if pass_word == "710":
-    pass
+    winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
 else:
     print("                                                 Wrong Pass_Word!")
     time.sleep(1.5)
@@ -65,11 +67,16 @@ while True:
             print("os        - Show FM.OS operating system specifications")
 
         case "shutdown":
+            sound = pyttsx3.init()
+            sound.setProperty("rate" , 170)
+            sound.say("shut down")
+            sound.runAndWait()
             print("Shutting Down FM.OS...")
-            time.sleep(1.5)
+            time.sleep(0.5)
             sys.exit()
 
         case "clear" | "cls":
+            winsound.Beep(2000,250)
             os.system("cls")
         
         case "calc":
@@ -91,6 +98,7 @@ while True:
             if filer in files:
                 os.system(f"{filer}")
             else:
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print("Invalid File Name.")
 
         case "addf":
@@ -108,6 +116,7 @@ while True:
                     f.write(content)
                 print(f"File '{filem}' content updated successfully.")
             else:
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"File '{filem}' does not exist.")
 
         case "renamef":
@@ -117,6 +126,7 @@ while True:
                 os.rename(old_name, new_name)
                 print(f"Success! File '{old_name}' has been renamed to '{new_name}'.")
             else:
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"Error: Source file '{old_name}' not found. Cannot rename.")
 
     
@@ -126,6 +136,7 @@ while True:
                 with open(filear, 'r', encoding='utf-8') as f:
                     print(f.read())
             else:
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"Error: File '{filear}' does not exist.")
 
         case "removef":
@@ -134,6 +145,7 @@ while True:
                 os.remove(filetd)
                 print(f"Success: File '{filetd}' has been deleted.")
             else:
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"File {filetd} does not exist.")
         
         case "plays":
@@ -142,6 +154,7 @@ while True:
                 playsound(song_name, block=False)
                 print(f"Playing '{song_name}' in background.")
             else:
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"File '{song_name}' not found.")
 
 
@@ -154,8 +167,10 @@ while True:
             if pidtk.isdigit():
                 p = psutil.Process(int(pidtk))
                 p.terminate()
+                winsound.Beep(1000, 500)
                 print(f"Process {pidtk} closed.")
             else:
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"{pidtk} does not exist")
 
         case "sysinfo":
@@ -169,6 +184,7 @@ while True:
             print(f"Swap Memory Usage Percentage: {psutil.swap_memory().percent}%")
 
         case "wifi":
+            winsound.Beep(1000, 500)
             output = subprocess.check_output("netsh wlan show interfaces", shell = True , text = True)
             if "SSID" in output:
                 print(output)
@@ -176,6 +192,7 @@ while True:
                 print("Not connected to any Wi-Fi network.")
 
         case "wifia":
+            winsound.Beep(1000, 500)
             wifia = subprocess.check_output(['netsh', 'wlan', 'show', 'network']).decode('utf-8')
             print("Scan Wi-Fi:\n")
             print(wifia)
@@ -204,10 +221,13 @@ while True:
             elif color == "reset":
                 colort = Fore.RESET
                 colorb = Back.RESET
+                winsound.Beep(1000, 500)
                 print(Style.RESET_ALL + "Colors have been reset!")
             else:
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print("Invalid command! Try again.")
                 continue
+            winsound.Beep(1000, 500)
             print(colort + colorb + "Color updated!\n")
 
         case "os":
@@ -220,4 +240,3 @@ while True:
 
         case _:
             print(f"Command Not Found: {command}\n")
-
