@@ -16,21 +16,27 @@ import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=False)
 
+PACKAGE = ['psutil' , 'pyttsx3' , 'playsound' , 'tqdm' , 'colorama']
+subprocess.check_call([sys.executable, "-m", "pip", "install"] + PACKAGE)
+print("Packages installed.")
+os.system("cls")
+
 pass_word = input("                                                  Pass Word>> ")
 if pass_word == "710":
     winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
 else:
     print("                                                 Wrong Pass_Word!")
-    time.sleep(1.5)
+    time.sleep(1)
     sys.exit()
 
 steps = 100
 print("                                                     Loading")
 for _ in tqdm(range(steps), bar_format="{l_bar}{bar}|"):
-    time.sleep(0.015)
+    time.sleep(0.01)
 print("                                               Loading is complete.\n")
+os.system("cls")
 
-print("Welcome To FM.OS [Version 1.0]\nType 'Help' For A List Of Commands.\n")
+print("Welcome To FM.OS [Version 7.0]\nType 'Help' For A List Of Commands.\n")
 
 while True:
     user_input = input(">>> ")
@@ -68,8 +74,9 @@ while True:
 
         case "shutdown":
             sound = pyttsx3.init()
-            sound.setProperty("rate" , 170)
+            sound.setProperty("rate" , 200)
             sound.say("shut down")
+            time.sleep(0)
             sound.runAndWait()
             print("Shutting Down FM.OS...")
             time.sleep(0.5)
@@ -240,3 +247,4 @@ while True:
 
         case _:
             print(f"Command Not Found: {command}\n")
+          
