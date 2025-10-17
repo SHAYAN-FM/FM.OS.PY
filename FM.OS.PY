@@ -239,7 +239,7 @@ while True:
 
         case "os":
             print("The name of the operating system : FM.OS")
-            print("Operating system version : 1.0")
+            print("Operating system version : 7.0")
             print("Operating system manufacturer name : SHAYAN-FM")
 
         case "":
@@ -247,4 +247,3 @@ while True:
 
         case _:
             print(f"Command Not Found: {command}\n")
-          
