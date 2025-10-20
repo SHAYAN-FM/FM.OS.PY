@@ -235,7 +235,7 @@ while True:
                 print(f"Invalid command! Try again.")
                 continue
             winsound.Beep(1000, 500)
-            print(colort + colorb + "Color updated!\n")
+            print(colort + colorb + "Color updated!")
 
         case "os":
             print("The name of the operating system : FM.OS")
@@ -246,4 +246,4 @@ while True:
             pass
 
         case _:
-            print(f"{Fore.RED}Command Not Found: {command}{Style.RESET_ALL}\n")
+            print(f"{Fore.LIGHTBLACK_EX}Command Not Found: {command}{Style.RESET_ALL}")
