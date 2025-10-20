@@ -92,7 +92,7 @@ while True:
             print(f"Result : {result}")
 
         case "time" | "date":
-            print(f"Present time: {datetime.datetime.now()}")
+            print(f"{Fore.YELLOW}Present time: {datetime.datetime.now()}{Style.RESET_ALL}")
 
         case "ls" | "dir" | "gci":
             ls = os.listdir()
@@ -106,14 +106,14 @@ while True:
                 os.system(f"{filer}")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
-                print("Invalid File Name.")
+                print(f"{Fore.RED}Invalid File Name.{Style.RESET_ALL}")
 
         case "addf":
             filen = input("Add New File Name (with extension)>> ")
             content = input("Enter content for the file>> ")
             with open(filen, 'w', encoding='utf-8') as f:
                 f.write(content)
-            print(f"Success! File '{filen}' created and content written.")
+            print(f"{Fore.RED}Success! File '{filen}' created and content written.{Style.RESET_ALL}")
 
         case "pcontentf":
             filem = input("Enter file name to update content>> ")
@@ -124,7 +124,7 @@ while True:
                 print(f"File '{filem}' content updated successfully.")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
-                print(f"File '{filem}' does not exist.")
+                print(f"{Fore.RED}File '{filem}' does not exist.{Style.RESET_ALL}")
 
         case "renamef":
             old_name = input("Enter the current name of the file>> ")
@@ -134,7 +134,7 @@ while True:
                 print(f"Success! File '{old_name}' has been renamed to '{new_name}'.")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
-                print(f"Error: Source file '{old_name}' not found. Cannot rename.")
+                print(f"{Fore.RED}Error: Source file '{old_name}' not found. Cannot rename.{Style.RESET_ALL}")
 
     
         case "readf":
@@ -144,7 +144,7 @@ while True:
                     print(f.read())
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
-                print(f"Error: File '{filear}' does not exist.")
+                print(f"{Fore.RED}Error: File '{filear}' does not exist.{Style.RESET_ALL}")
 
         case "removef":
             filetd = input("Enter file name to delete>> ")
@@ -153,7 +153,7 @@ while True:
                 print(f"Success: File '{filetd}' has been deleted.")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
-                print(f"File {filetd} does not exist.")
+                print(f"{Fore.RED}File {filetd} does not exist.{Style.RESET_ALL}")
         
         case "plays":
             song_name = input("Song_name>> ")
@@ -162,7 +162,7 @@ while True:
                 print(f"Playing '{song_name}' in background.")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
-                print(f"File '{song_name}' not found.")
+                print(f"{Fore.RED}File '{song_name}' not found.{Style.RESET_ALL}")
 
 
         case "task":
@@ -178,7 +178,7 @@ while True:
                 print(f"Process {pidtk} closed.")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
-                print(f"{pidtk} does not exist")
+                print(f"{Fore.RED}{pidtk} does not exist{Style.RESET_ALL}")
 
         case "sysinfo":
             print("System Info:")
@@ -232,7 +232,7 @@ while True:
                 print(Style.RESET_ALL + "Colors have been reset!")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
-                print("Invalid command! Try again.")
+                print(f"Invalid command! Try again.")
                 continue
             winsound.Beep(1000, 500)
             print(colort + colorb + "Color updated!\n")
@@ -246,4 +246,4 @@ while True:
             pass
 
         case _:
-            print(f"Command Not Found: {command}\n")
+            print(f"{Fore.RED}Command Not Found: {command}{Style.RESET_ALL}\n")
