@@ -36,7 +36,16 @@ for _ in tqdm(range(steps), bar_format="{l_bar}{bar}|"):
 print("                                               Loading is complete.\n")
 os.system("cls")
 
-print("Welcome To FM.OS [Version 7.0]\nType 'Help' For A List Of Commands.\n")
+print("    ▄████████   ▄▄▄▄███▄▄▄▄  ")
+print("   ███    ███ ▄██▀▀▀███▀▀▀██▄")
+print("   ███    █▀  ███   ███   ███")
+print("  ▄███▄▄▄     ███   ███   ███")
+print(" ▀▀███▀▀▀     ███   ███   ███")
+print("   ███        ███   ███   ███")
+print("   ███        ███   ███   ███")
+print("   ███         ▀█   ███   █▀ ")
+
+print("Welcome To FM.OS [Version 1.7]\nType 'Help' For A List Of Commands.\n")
 
 while True:
     user_input = input(">>> ")
@@ -239,7 +248,7 @@ while True:
 
         case "os":
             print("The name of the operating system : FM.OS")
-            print("Operating system version : 7.0")
+            print("Operating system version : 1.7")
             print("Operating system manufacturer name : SHAYAN-FM")
 
         case "":
@@ -247,3 +256,4 @@ while True:
 
         case _:
             print(f"{Fore.LIGHTBLACK_EX}Command Not Found: {command}{Style.RESET_ALL}")
+
