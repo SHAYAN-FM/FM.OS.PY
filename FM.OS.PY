@@ -11,6 +11,7 @@ import datetime
 import platform
 import subprocess
 import playsound
+import webbrowser
 from tqdm import tqdm
 import colorama
 from colorama import Fore, Back, Style
@@ -79,6 +80,7 @@ while True:
             print("echo      - Print a custom message")
             print("print     - Print a custom message")
             print("color     - Change text and background colors")
+            print("star      - Vote for the app on GitHub")
             print("os        - Show FM.OS operating system specifications")
 
         case "shutdown":
@@ -251,9 +253,12 @@ while True:
             print("Operating system version : 1.7")
             print("Operating system manufacturer name : SHAYAN-FM")
 
+        case "star":
+            url = "https://github.com/SHAYAN-FM/FM.OS.PY.git"
+            webbrowser.open(url)
+
         case "":
             pass
 
         case _:
             print(f"{Fore.LIGHTBLACK_EX}Command Not Found: {command}{Style.RESET_ALL}")
-
