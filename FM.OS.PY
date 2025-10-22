@@ -26,7 +26,7 @@ pass_word = input("                                                  Pass Word>>
 if pass_word == "710":
     winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
 else:
-    print("                                                 Wrong Pass_Word!")
+    print(f"{Fore.RED}                                                 Wrong Pass_Word!")
     time.sleep(1)
     sys.exit()
 
@@ -46,7 +46,7 @@ print("   ███        ███   ███   ███")
 print("   ███        ███   ███   ███")
 print("   ███         ▀█   ███   █▀ ")
 
-print("Welcome To FM.OS [Version 1.7]\nType 'Help' For A List Of Commands.\n")
+print("Welcome To FM.OS [Version 2.0]\nType 'Help' For A List Of Commands.\n")
 
 while True:
     user_input = input(">>> ")
@@ -54,7 +54,7 @@ while True:
 
     match command:
         case "help":
-            print("\nList of available commands:\n")
+            print(f"\n{Fore.GREEN}List of available commands:\n")
             print("help      - Show this list of commands")
             print("shutdown  - Exit the program")
             print("clear     - Clear the terminal screen")
@@ -73,7 +73,7 @@ while True:
             print("removef   - Delete an existing file")
             print("plays     - Play a song by specifying its name")
             print("task      - Display running processes")
-            print("pidkill    - Terminate a process by PID")
+            print("pidkill   - Terminate a process by PID")
             print("sysinfo   - Show system information")
             print("wifi      - Checking WiFi connection status")
             print("wifia     - Show a list of nearby Wi-Fi networks")
@@ -81,7 +81,7 @@ while True:
             print("print     - Print a custom message")
             print("color     - Change text and background colors")
             print("star      - Vote for the app on GitHub")
-            print("os        - Show FM.OS operating system specifications")
+            print(f"os        - Show FM.OS operating system specifications{Style.RESET_ALL}")
 
         case "shutdown":
             sound = pyttsx3.init()
@@ -89,7 +89,7 @@ while True:
             sound.say("shut down")
             time.sleep(0)
             sound.runAndWait()
-            print("Shutting Down FM.OS...")
+            print(f"{Fore.LIGHTMAGENTA_EX}Shutting Down FM.OS...")
             time.sleep(0.5)
             sys.exit()
 
@@ -100,7 +100,7 @@ while True:
         case "calc":
             calc = input("CalC>> ")
             result = eval(calc)
-            print(f"Result : {result}")
+            print(f"{Fore.LIGHTRED_EX}Result : {result}{Style.RESET_ALL}")
 
         case "time" | "date":
             print(f"{Fore.YELLOW}Present time: {datetime.datetime.now()}{Style.RESET_ALL}")
@@ -108,7 +108,7 @@ while True:
         case "ls" | "dir" | "gci":
             ls = os.listdir()
             for item in ls:
-                print(item)
+                print(f"{Fore.YELLOW}{item}{Style.RESET_ALL}")
 
         case "openf":
             files = os.listdir()
@@ -124,7 +124,7 @@ while True:
             content = input("Enter content for the file>> ")
             with open(filen, 'w', encoding='utf-8') as f:
                 f.write(content)
-            print(f"{Fore.RED}Success! File '{filen}' created and content written.{Style.RESET_ALL}")
+            print(f"{Fore.GREEN}Success! File '{filen}' created and content written.{Style.RESET_ALL}")
 
         case "pcontentf":
             filem = input("Enter file name to update content>> ")
@@ -132,7 +132,7 @@ while True:
                 content = input("Enter NEW content>> ")
                 with open(filem, 'w', encoding='utf-8') as f:
                     f.write(content)
-                print(f"File '{filem}' content updated successfully.")
+                print(f"{Fore.GREEN}File '{filem}' content updated successfully.{Style.RESET_ALL}")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"{Fore.RED}File '{filem}' does not exist.{Style.RESET_ALL}")
@@ -142,7 +142,7 @@ while True:
             if os.path.exists(old_name):
                 new_name = input("Enter the new name for the file>> ")
                 os.rename(old_name, new_name)
-                print(f"Success! File '{old_name}' has been renamed to '{new_name}'.")
+                print(f"{Fore.GREEN}Success! File '{old_name}' has been renamed to '{new_name}'.{Style.RESET_ALL}")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"{Fore.RED}Error: Source file '{old_name}' not found. Cannot rename.{Style.RESET_ALL}")
@@ -161,7 +161,7 @@ while True:
             filetd = input("Enter file name to delete>> ")
             if os.path.exists(filetd):
                 os.remove(filetd)
-                print(f"Success: File '{filetd}' has been deleted.")
+                print(f"{Fore.GREEN}Success: File '{filetd}' has been deleted.{Style.RESET_ALL}")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"{Fore.RED}File {filetd} does not exist.{Style.RESET_ALL}")
@@ -177,8 +177,8 @@ while True:
 
 
         case "task":
-            for proc in psutil.process_iter(['pid', 'name']):
-                print(proc.info)
+            for proc in psutil.process_iter(['pid' , 'name']):
+                print(f"{Fore.YELLOW}{proc.info}{Style.RESET_ALL}")
 
         case "pidkill":
             pidtk = input("PIDtk>> ")
@@ -186,34 +186,34 @@ while True:
                 p = psutil.Process(int(pidtk))
                 p.terminate()
                 winsound.Beep(1000, 500)
-                print(f"Process {pidtk} closed.")
+                print(f"{Fore.GREEN}Process {pidtk} closed.{Style.RESET_ALL}")
             else:
                 winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
                 print(f"{Fore.RED}{pidtk} does not exist{Style.RESET_ALL}")
 
         case "sysinfo":
-            print("System Info:")
+            print(f"{Back.LIGHTBLACK_EX}System Info:")
             print(f"OS: {platform.system()} {platform.release()}")
-            print(f"Total Memory (RAM): {psutil.virtual_memory().total / (1024 ** 3):.2f} GB")
+            print(f"Total Memory (RAM): {psutil.virtual_memory().total / (1024 ** 3):.2f}GB")
             print(f"Used Memory (RAM): {psutil.virtual_memory().used / (1024 ** 3):.2f} GB")
             print(f"Memory Usage Percentage (RAM): {psutil.virtual_memory().percent}%")
             print(f"Total Swap Memory: {psutil.swap_memory().total / (1024 ** 3):.2f} GB")
             print(f"Used Swap Memory: {psutil.swap_memory().used / (1024 ** 3):.2f} GB")
-            print(f"Swap Memory Usage Percentage: {psutil.swap_memory().percent}%")
+            print(f"Swap Memory Usage Percentage: {psutil.swap_memory().percent}%{Style.RESET_ALL}")
 
         case "wifi":
             winsound.Beep(1000, 500)
             output = subprocess.check_output("netsh wlan show interfaces", shell = True , text = True)
             if "SSID" in output:
-                print(output)
+                print(f"{Fore.GREEN}{output}{Style.RESET_ALL}")
             else:
-                print("Not connected to any Wi-Fi network.")
+                print(f"{Fore.RED}You are not connected to any WiFi.{Style.RESET_ALL}")
 
         case "wifia":
             winsound.Beep(1000, 500)
             wifia = subprocess.check_output(['netsh', 'wlan', 'show', 'network']).decode('utf-8')
             print("Scan Wi-Fi:\n")
-            print(wifia)
+            print(f"{Fore.GREEN}{wifia}{Style.RESET_ALL}")
 
         case "echo" | "print":
             ep = input("ep>> ")
@@ -249,9 +249,9 @@ while True:
             print(colort + colorb + "Color updated!")
 
         case "os":
-            print("The name of the operating system : FM.OS")
-            print("Operating system version : 1.7")
-            print("Operating system manufacturer name : SHAYAN-FM")
+            print(f"{Fore.BLUE}The name of the operating system : FM.OS")
+            print("Operating system version : 2.0")
+            print(f"Operating system manufacturer name : SHAYAN-FM{Style.RESET_ALL}")
 
         case "star":
             url = "https://github.com/SHAYAN-FM/FM.OS.PY.git"
