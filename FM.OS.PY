@@ -17,6 +17,7 @@ import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=False)
 
+os.system("title FM.OS.PY")
 
 PACKAGE = ['psutil' , 'pyttsx3' , 'playsound' , 'tqdm' , 'colorama']
 subprocess.check_call([sys.executable, "-m", "pip", "install"] + PACKAGE)
@@ -81,6 +82,7 @@ while True:
             print("wifi      - Checking WiFi connection status")
             print("wifia     - Show a list of nearby Wi-Fi networks")
             print("echo      - Print a custom message")
+            print("title     - Change OS title")
             print("print     - Print a custom message")
             print("color     - Change text and background colors")
             print("star      - Vote for the app on GitHub")
@@ -217,6 +219,10 @@ while True:
             wifia = subprocess.check_output(['netsh', 'wlan', 'show', 'network']).decode('utf-8')
             print("Scan Wi-Fi:\n")
             print(f"{Fore.GREEN}{wifia}{Style.RESET_ALL}")
+
+        case "title":
+            newt = input("new title>> ")
+            os.system(f"title {newt}")
 
         case "echo" | "print":
             ep = input("ep>> ")
