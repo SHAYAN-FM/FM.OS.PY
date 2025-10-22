@@ -17,6 +17,7 @@ import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=False)
 
+
 PACKAGE = ['psutil' , 'pyttsx3' , 'playsound' , 'tqdm' , 'colorama']
 subprocess.check_call([sys.executable, "-m", "pip", "install"] + PACKAGE)
 print("Packages installed.")
@@ -247,9 +248,10 @@ while True:
                 continue
             winsound.Beep(1000, 500)
             print(colort + colorb + "Color updated!")
+            os.system("cls")
 
         case "os":
-            print(f"{Fore.BLUE}The name of the operating system : FM.OS")
+            print(f"{Fore.LIGHTBLUE_EX}The name of the operating system : FM.OS")
             print("Operating system version : 2.0")
             print(f"Operating system manufacturer name : SHAYAN-FM{Style.RESET_ALL}")
 
