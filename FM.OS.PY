@@ -38,14 +38,16 @@ for _ in tqdm(range(steps), bar_format="{l_bar}{bar}|"):
 print("                                               Loading is complete.\n")
 os.system("cls")
 
-print("    ▄████████   ▄▄▄▄███▄▄▄▄  ")
+
+print("   ▄████████    ▄▄▄▄███▄▄▄▄  ")
 print("   ███    ███ ▄██▀▀▀███▀▀▀██▄")
 print("   ███    █▀  ███   ███   ███")
 print("  ▄███▄▄▄     ███   ███   ███")
 print(" ▀▀███▀▀▀     ███   ███   ███")
 print("   ███        ███   ███   ███")
 print("   ███        ███   ███   ███")
-print("   ███         ▀█   ███   █▀ ")
+print("   ███         ▀█   ███   █▀")
+
 
 print("Welcome To FM.OS [Version 2.0]\nType 'Help' For A List Of Commands.\n")
 
@@ -55,7 +57,7 @@ while True:
 
     match command:
         case "help":
-            print(f"\n{Fore.GREEN}List of available commands:\n")
+            print(f"\n{Fore.LIGHTGREEN_EX}List of available commands:\n")
             print("help      - Show this list of commands")
             print("shutdown  - Exit the program")
             print("clear     - Clear the terminal screen")
