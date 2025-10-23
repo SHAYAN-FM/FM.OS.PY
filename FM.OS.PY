@@ -87,6 +87,7 @@ taskkill  - Terminate a process by PID
 sysinfo   - Show system information
 wifi      - Checking WiFi connection status
 wifia     - Show a list of nearby Wi-Fi networks
+game      - Running web games
 echo      - Print a custom message
 title     - Change OS title
 print     - Print a custom message
@@ -235,6 +236,27 @@ Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
             wifia = subprocess.check_output(['netsh', 'wlan', 'show', 'network']).decode('utf-8')
             print("Scan Wi-Fi:\n")
             print(f"{Fore.GREEN}{wifia}{Style.RESET_ALL}")
+
+
+        case "game":
+            print(f"{Fore.LIGHTBLUE_EX}list games : deadshot | shilter | sloperun | slingdrift | pong | pacmac")
+            game = input(f"Select the game>> {Style.RESET_ALL}")
+            game = game.lower().strip()
+            if game == "deadshot":
+                webbrowser.open("https://deadshot.io/")
+            elif game == "shilter":
+                webbrowser.open("http://slither.io/")
+            elif game == "sloperun":
+                webbrowser.open("https://slopegame.io/")
+            elif game == "slingdrift":
+                webbrowser.open("https://slingdrift.com/")
+            elif game == "pong":
+                webbrowser.open("https://freepong.org/")
+            elif game == "pacman":
+                webbrowser.open("https://www.google.com/logos/2010/pacman10-i.html")
+            else:
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
+                print(f"{Fore.RED}game not found!{Style.RESET_ALL}")
 
 
         case "title":
