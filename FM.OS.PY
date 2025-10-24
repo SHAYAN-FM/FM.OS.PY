@@ -1,5 +1,5 @@
 #PASS WORD = 710
-
+#Windows dependent
 
 import os
 import sys
@@ -10,7 +10,6 @@ import winsound
 import datetime
 import platform
 import subprocess
-import playsound
 import webbrowser
 from tqdm import tqdm
 import colorama
@@ -56,8 +55,8 @@ print("Welcome To FM.OS [Version 2.0]\nType 'Help' For A List Of Commands.\n")
 
 
 while True:
-    user_input = input(">>> ")
-    command = user_input.strip().lower()
+        user_input = input(">>> "):
+        command = user_input.strip().lower()
 
 
     match command:
