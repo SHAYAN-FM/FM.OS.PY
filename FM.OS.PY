@@ -205,18 +205,15 @@ Used Swap Memory: {psutil.swap_memory().used / (1024 ** 3):.2f} GB
 Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
 
 		case "wifi":
-			winsound.Beep(1000, 500)
-			output = subprocess.check_output("netsh wlan show interfaces", shell = True , text = True)
-			if "SSID" in output:
-				print(f"{Fore.GREEN}{output}{Style.RESET_ALL}")
-			else:
-				print(f"{Fore.RED}You are not connected to any WiFi.{Style.RESET_ALL}")
+			print(Fore.GREEN)
+			os.system("netsh wlan show interfaces")
+			print(Style.RESET_ALL)
 
 		case "wifia":
-			winsound.Beep(1000, 500)
-			wifia = subprocess.check_output(['netsh', 'wlan', 'show', 'network']).decode('utf-8')
-			print("Scan Wi-Fi:\n")
-			print(f"{Fore.GREEN}{wifia}{Style.RESET_ALL}")
+			winsound.Beep(1000 , 500)
+			print(Fore.GREEN)
+			os.system("netsh wlan show network")
+			print(Style.RESET_ALL)
 
 		case "game":
 			print(f"{Fore.LIGHTBLUE_EX}list games : deadshot | shilter | sloperun | slingdrift | pong | pacmac")
