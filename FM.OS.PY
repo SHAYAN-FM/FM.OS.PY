@@ -83,8 +83,10 @@ removef   - Delete an existing file
 tasklist  - Display running processes
 taskkill  - Terminate a process by PID
 sysinfo   - Show system information
+battery   - Show battery status
 wifi      - Checking WiFi connection status
 wifia     - Show a list of nearby Wi-Fi networks
+wifip     - Show the passwords of the WiFi networks we are connected to
 game      - Running web games
 echo      - Print a custom message
 title     - Change OS title
@@ -204,6 +206,10 @@ Total Swap Memory: {psutil.swap_memory().total / (1024 ** 3):.2f} GB
 Used Swap Memory: {psutil.swap_memory().used / (1024 ** 3):.2f} GB
 Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
 
+		case "battery":
+			battery = psutil.sensors_battery()
+			print(f"{Fore.LIGHTGREEN_EX}Battery: {battery.percent}% - {'Charging' if battery.power_plugged else 'Not Charging'}{Style.RESET_ALL}")
+
 		case "wifi":
 			print(Fore.GREEN)
 			os.system("netsh wlan show interfaces")
@@ -213,6 +219,13 @@ Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
 			winsound.Beep(1000 , 500)
 			print(Fore.GREEN)
 			os.system("netsh wlan show network")
+			print(Style.RESET_ALL)
+
+		case "wifip":
+			WiFi_Name = input("WiFi Name>> ")
+			wifi_password = (f' netsh wlan show profile name = "{WiFi_Name}" key=clear | findstr "Key Content" ')
+			print(Fore.LIGHTMAGENTA_EX)
+			os.system(wifi_password)
 			print(Style.RESET_ALL)
 
 		case "game":
