@@ -229,7 +229,7 @@ Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
 			print(Style.RESET_ALL)
 
 		case "game":
-			print(f"{Fore.LIGHTBLUE_EX}list games : deadshot | shilter | sloperun | slingdrift | pong | pacmac")
+			print(f"{Fore.LIGHTBLUE_EX}list games : deadshot | shilter | sloperun | slingdrift | pong | sonic | pacmac")
 			game = input(f"Select the game>> {Style.RESET_ALL}")
 			game = game.lower().strip()
 			if game == "deadshot":
@@ -242,6 +242,8 @@ Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
 				webbrowser.open("https://slingdrift.com/")
 			elif game == "pong":
 				webbrowser.open("https://freepong.org/")
+			elif game == "sonic":
+				webbrowser.open("https://freesonic.org/")
 			elif game == "pacman":
 				webbrowser.open("https://www.google.com/logos/2010/pacman10-i.html")
 			else:
