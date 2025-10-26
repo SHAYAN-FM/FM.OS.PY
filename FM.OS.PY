@@ -24,7 +24,7 @@ os.system("pip install colorama tqdm pyttsx3 psutil")
 os.system("cls")
 
 
-pass_word = input("                                                  Pass Word>> ")
+pass_word = input("                                                  Pass Word>> ").strip().lower()
 if pass_word == "710":
 	winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
 else:
@@ -112,7 +112,7 @@ os        - Show FM.OS operating system specifications{Style.RESET_ALL}
 
 		case "calc":
 			calc = input("CalC>> ")
-			result = eval(calc)
+			result = eval(calc).strip().lower()
 			print(f"{Fore.LIGHTRED_EX}Result : {result}{Style.RESET_ALL}")
 
 		case "time" | "date":
@@ -136,14 +136,14 @@ os        - Show FM.OS operating system specifications{Style.RESET_ALL}
 				print(f"{Fore.RED}Invalid File Name.{Style.RESET_ALL}")
 
 		case "addf":
-			filen = input("Add New File Name (with extension)>> ")
+			filen = input("Add New File Name (with extension)>> ").strip().lower()
 			content = input("Enter content for the file>> ")
 			with open(filen, 'w', encoding='utf-8') as f:
 				f.write(content)
 			print(f"{Fore.GREEN}Success! File '{filen}' created and content written.{Style.RESET_ALL}")
 
 		case "pcontentf":
-			filem = input("Enter file name to update content>> ")
+			filem = input("Enter file name to update content>> ").strip().lower()
 			if os.path.exists(filem):
 				content = input("Enter NEW content>> ")
 				with open(filem, 'w', encoding='utf-8') as f:
@@ -154,9 +154,9 @@ os        - Show FM.OS operating system specifications{Style.RESET_ALL}
 				print(f"{Fore.RED}File '{filem}' does not exist.{Style.RESET_ALL}")
 
 		case "renamef":
-			old_name = input("Enter the current name of the file>> ")
+			old_name = input("Enter the current name of the file>> ").strip().lower()
 			if os.path.exists(old_name):
-				new_name = input("Enter the new name for the file>> ")
+				new_name = input("Enter the new name for the file>> ").strip().lower()
 				os.rename(old_name, new_name)
 				print(f"{Fore.GREEN}Success! File '{old_name}' has been renamed to '{new_name}'.{Style.RESET_ALL}")
 			else:
@@ -164,7 +164,7 @@ os        - Show FM.OS operating system specifications{Style.RESET_ALL}
 				print(f"{Fore.RED}Error: Source file '{old_name}' not found. Cannot rename.{Style.RESET_ALL}")
 
 		case "readf":
-			filear = input("Enter the name of the file to read>> ")
+			filear = input("Enter the name of the file to read>> ").strip().lower()
 			if os.path.exists(filear):
 				with open(filear, 'r', encoding='utf-8') as f:
 					print(f.read())
@@ -222,7 +222,7 @@ Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
 			print(Style.RESET_ALL)
 
 		case "wifip":
-			WiFi_Name = input("WiFi Name>> ")
+			WiFi_Name = input("WiFi Name>> ").strip().lower()
 			wifi_password = (f' netsh wlan show profile name = "{WiFi_Name}" key=clear | findstr "Key Content" ')
 			print(Fore.LIGHTMAGENTA_EX)
 			os.system(wifi_password)
