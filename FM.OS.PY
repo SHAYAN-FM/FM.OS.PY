@@ -211,6 +211,7 @@ Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
 			print(f"{Fore.LIGHTGREEN_EX}Battery: {battery.percent}% - {'Charging' if battery.power_plugged else 'Not Charging'}{Style.RESET_ALL}")
 
 		case "wifi":
+			winsound.Beep(1000 , 500)
 			print(Fore.GREEN)
 			os.system("netsh wlan show interfaces")
 			print(Style.RESET_ALL)
@@ -311,3 +312,4 @@ Operating system manufacturer name : SHAYAN-FM{Style.RESET_ALL}""")
 
 		case _:
 			print(f"{Fore.LIGHTBLACK_EX}Command Not Found: {command}{Style.RESET_ALL}")
+
