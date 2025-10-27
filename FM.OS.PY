@@ -112,7 +112,7 @@ os        - Show FM.OS operating system specifications{Style.RESET_ALL}
 
 		case "calc":
 			calc = input("CalC>> ")
-			result = eval(calc).strip().lower()
+			result = eval(calc)
 			print(f"{Fore.LIGHTRED_EX}Result : {result}{Style.RESET_ALL}")
 
 		case "time" | "date":
