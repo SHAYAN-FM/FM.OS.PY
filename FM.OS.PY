@@ -199,6 +199,7 @@ os        - Show FM.OS operating system specifications{Style.RESET_ALL}
 		case "sysinfo":
 			print(f"""System Info:
 			{os.system("systeminfo")}
+			{os.system("wmic cpu get name")}
 Total Memory (RAM): {psutil.virtual_memory().total / (1024 ** 3):.2f}GB
 Used Memory (RAM): {psutil.virtual_memory().used / (1024 ** 3):.2f} GB
 Memory Usage Percentage (RAM): {psutil.virtual_memory().percent}%
@@ -312,4 +313,3 @@ Operating system manufacturer name : SHAYAN-FM{Style.RESET_ALL}""")
 
 		case _:
 			print(f"{Fore.LIGHTBLACK_EX}Command Not Found: {command}{Style.RESET_ALL}")
-
