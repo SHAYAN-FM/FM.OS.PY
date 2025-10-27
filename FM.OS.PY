@@ -8,9 +8,8 @@ import psutil
 import pyttsx3
 import winsound
 import datetime
-import platform
-import subprocess
 import webbrowser
+from urllib.parse import quote
 from tqdm import tqdm
 import colorama
 from colorama import Fore, Back, Style
@@ -92,6 +91,7 @@ echo      - Print a custom message
 title     - Change OS title
 print     - Print a custom message
 color     - Change text and background colors
+search    - Ability to search in Google browser
 star      - Vote for the app on GitHub
 os        - Show FM.OS operating system specifications{Style.RESET_ALL}
 """)
@@ -289,14 +289,22 @@ Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
 			print(colort + colorb + "Color updated!")
 			os.system("cls")
 
+		case "search":
+			search = input("SEARCH>> ")
+			if "http" in search.lower():
+   				fs = search
+			else:
+				fs =  "https://www.google.com/search?q=" + quote(search)
+			webbrowser.open(fs)
+
+		case "star":
+			github = "https://github.com/SHAYAN-FM/FM.OS.PY.git"
+			webbrowser.open(github)
+
 		case "os":            
 			print(f"""{Fore.LIGHTBLUE_EX}The name of the operating system : FM.OS
 Operating system version : 2.0
 Operating system manufacturer name : SHAYAN-FM{Style.RESET_ALL}""")
-
-		case "star":
-			url = "https://github.com/SHAYAN-FM/FM.OS.PY.git"
-			webbrowser.open(url)
 
 		case "":
 			pass
