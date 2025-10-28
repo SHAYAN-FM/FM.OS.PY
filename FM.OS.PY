@@ -5,6 +5,7 @@ import os
 import sys
 import time
 import psutil
+import socket
 import pyttsx3
 import winsound
 import datetime
@@ -19,7 +20,7 @@ colorama.init(autoreset=False)
 os.system("title FM . OS . PY")
 
 
-os.system("pip install colorama tqdm pyttsx3 psutil")
+os.system("pip install colorama tqdm pyttsx3 psutil socket")
 os.system("cls")
 
 
@@ -197,15 +198,22 @@ os        - Show FM.OS operating system specifications{Style.RESET_ALL}
 				print(f"{Fore.RED}{pidtk} does not exist{Style.RESET_ALL}")
 
 		case "sysinfo":
+			mem = psutil.virtual_memory()
+			disk = psutil.disk_usage('/')
 			print(f"""System Info:
-			{os.system("systeminfo")}
 			{os.system("wmic cpu get name")}
-Total Memory (RAM): {psutil.virtual_memory().total / (1024 ** 3):.2f}GB
-Used Memory (RAM): {psutil.virtual_memory().used / (1024 ** 3):.2f} GB
-Memory Usage Percentage (RAM): {psutil.virtual_memory().percent}%
-Total Swap Memory: {psutil.swap_memory().total / (1024 ** 3):.2f} GB
-Used Swap Memory: {psutil.swap_memory().used / (1024 ** 3):.2f} GB
-Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
+			{os.system("systeminfo")}
+RAM Total: {mem.total / (1024 ** 3):.2f} GB
+RAM Used: {mem.used / (1024 ** 3):.2f} GB ({mem.percent}%)
+RAM Available: {mem.available / (1024 ** 3):.2f} GB
+Disk Total: {disk.total / (1024 ** 3):.2f} GB
+Disk Used: {disk.used / (1024 ** 3):.2f} GB ({disk.percent}%)
+Disk Free: {disk.free / (1024 ** 3):.2f} GB
+Swap Memory Usage Percentage: {psutil.swap_memory().percent}%
+CPU Usage: {psutil.cpu_percent()}%
+CPU Cores: {psutil.cpu_count(logical=False)} physical, {psutil.cpu_count()} logical
+CPU Frequency: {psutil.cpu_freq().current:.2f} MHz
+""")
 
 		case "battery":
 			battery = psutil.sensors_battery()
@@ -215,6 +223,9 @@ Swap Memory Usage Percentage: {psutil.swap_memory().percent}%""")
 			winsound.Beep(1000 , 500)
 			print(Fore.GREEN)
 			os.system("netsh wlan show interfaces")
+			hostname = socket.gethostname()
+			ip = socket.gethostbyname(hostname)
+			print(f"    IP Address: {ip}")
 			print(Style.RESET_ALL)
 
 		case "wifia":
