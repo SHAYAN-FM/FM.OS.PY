@@ -20,7 +20,7 @@ colorama.init(autoreset=False)
 os.system("title FM . OS . PY")
 
 
-os.system("pip install colorama tqdm pyttsx3 psutil socket")
+os.system("pip install colorama tqdm pyttsx3 psutil")
 os.system("cls")
 
 
@@ -93,8 +93,8 @@ title     - Change OS title
 print     - Print a custom message
 color     - Change text and background colors
 search    - Ability to search in Google browser
-star      - Vote for the app on GitHub
-os        - Show FM.OS operating system specifications{Style.RESET_ALL}
+os        - Show FM.OS operating system specifications
+star      - Vote for the app on GitHub{Style.RESET_ALL}
 """)
 
 		case "shutdown":
@@ -200,9 +200,10 @@ os        - Show FM.OS operating system specifications{Style.RESET_ALL}
 		case "sysinfo":
 			mem = psutil.virtual_memory()
 			disk = psutil.disk_usage('/')
-			print(f"""System Info:
-			{os.system("wmic cpu get name")}
-			{os.system("systeminfo")}
+			print("System Info: ")
+			os.system("wmic cpu get name")
+			os.system("systeminfo")
+			print("""
 RAM Total: {mem.total / (1024 ** 3):.2f} GB
 RAM Used: {mem.used / (1024 ** 3):.2f} GB ({mem.percent}%)
 RAM Available: {mem.available / (1024 ** 3):.2f} GB
@@ -310,14 +311,14 @@ CPU Frequency: {psutil.cpu_freq().current:.2f} MHz
 				fs =  "https://www.google.com/search?q=" + quote(search)
 			webbrowser.open(fs)
 
-		case "star":
-			github = "https://github.com/SHAYAN-FM/FM.OS.PY.git"
-			webbrowser.open(github)
-
 		case "os":            
 			print(f"""{Fore.LIGHTBLUE_EX}The name of the operating system : FM.OS
 Operating system version : 2.0
 Operating system manufacturer name : SHAYAN-FM{Style.RESET_ALL}""")
+			
+		case "star":
+			github = "https://github.com/SHAYAN-FM/FM.OS.PY.git"
+			webbrowser.open(github)
 
 		case "":
 			pass
