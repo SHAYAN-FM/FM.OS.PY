@@ -88,8 +88,8 @@ wifi      - Checking WiFi connection status
 wifia     - Show a list of nearby Wi-Fi networks
 wifip     - Show the passwords of the WiFi networks we are connected to
 game      - Running web games
-echo      - Print a custom message
 title     - Change OS title
+echo      - Print a custom message
 print     - Print a custom message
 color     - Change text and background colors
 search    - Ability to search in Google browser
