@@ -17,7 +17,7 @@ from colorama import Fore, Back, Style
 colorama.init(autoreset=False)
 
 
-os.system("title FM . OS . PY")
+os.system("title FM . OS")
 
 
 os.system("pip install colorama tqdm pyttsx3 psutil")
@@ -88,6 +88,7 @@ wifi      - Checking WiFi connection status
 wifia     - Show a list of nearby Wi-Fi networks
 wifip     - Show the passwords of the WiFi networks we are connected to
 game      - Running web games
+sound     - Convert text to sound
 title     - Change OS title
 echo      - Print a custom message
 print     - Print a custom message
@@ -264,6 +265,13 @@ CPU Frequency: {psutil.cpu_freq().current:.2f} MHz
 				winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
 				print(f"{Fore.RED}game not found!{Style.RESET_ALL}")
 
+		case "sound":
+			sinput = input("text to audio>>")
+			sound1 = pyttsx3.init()
+			sound1.setProperty("rate" , 140)
+			sound1.say(sinput)
+			sound1.runAndWait()
+
 		case "title":
 			newt = input("new title>> ")
 			os.system(f"title {newt}")
@@ -314,7 +322,7 @@ CPU Frequency: {psutil.cpu_freq().current:.2f} MHz
 		case "os":            
 			print(f"""{Fore.LIGHTBLUE_EX}The name of the operating system : FM.OS
 Operating system version : 2.0
-Operating system manufacturer name : SHAYAN-FM{Style.RESET_ALL}""")
+Developer name : SHAYAN-FM{Style.RESET_ALL}""")
 			
 		case "star":
 			github = "https://github.com/SHAYAN-FM/FM.OS.PY.git"
