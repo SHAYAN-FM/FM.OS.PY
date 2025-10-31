@@ -1,4 +1,3 @@
-#PASS WORD = 710
 #Windows dependent
 
 import os
@@ -22,15 +21,6 @@ os.system("title FM . OS")
 
 os.system("pip install colorama tqdm pyttsx3 psutil")
 os.system("cls")
-
-
-pass_word = input("                                                  Pass Word>> ").strip().lower()
-if pass_word == "710":
-	winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
-else:
-	print(f"{Fore.RED}                                                 Wrong Pass_Word!")
-	time.sleep(1)
-	sys.exit()
 
 
 steps = 100
@@ -204,7 +194,7 @@ star      - Vote for the app on GitHub{Style.RESET_ALL}
 			print("System Info: ")
 			os.system("wmic cpu get name")
 			os.system("systeminfo")
-			print("""
+			print(f"""
 RAM Total: {mem.total / (1024 ** 3):.2f} GB
 RAM Used: {mem.used / (1024 ** 3):.2f} GB ({mem.percent}%)
 RAM Available: {mem.available / (1024 ** 3):.2f} GB
@@ -215,7 +205,7 @@ Swap Memory Usage Percentage: {psutil.swap_memory().percent}%
 CPU Usage: {psutil.cpu_percent()}%
 CPU Cores: {psutil.cpu_count(logical=False)} physical, {psutil.cpu_count()} logical
 CPU Frequency: {psutil.cpu_freq().current:.2f} MHz
-""")
+				""")
 
 		case "battery":
 			battery = psutil.sensors_battery()
