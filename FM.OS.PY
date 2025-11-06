@@ -31,21 +31,23 @@ print("                                               Loading is complete.\n")
 os.system("cls")
 
 
-print("   ▄████████    ▄▄▄▄███▄▄▄▄  ")
-print("   ███    ███ ▄██▀▀▀███▀▀▀██▄")
-print("   ███    █▀  ███   ███   ███")
-print("  ▄███▄▄▄     ███   ███   ███")
-print(" ▀▀███▀▀▀     ███   ███   ███")
-print("   ███        ███   ███   ███")
-print("   ███        ███   ███   ███")
-print("   ███         ▀█   ███   █▀ ")
+print("""
+  ▄████████    ▄▄▄▄███▄▄▄▄  
+  ███    ███ ▄██▀▀▀███▀▀▀██▄
+  ███    █▀  ███   ███   ███
+ ▄███▄▄▄     ███   ███   ███
+▀▀███▀▀▀     ███   ███   ███
+  ███        ███   ███   ███
+  ███        ███   ███   ███
+  ███         ▀█   ███   █▀ 
+""")
 
-
-print("Welcome To FM.OS [Version 2.0]\nType 'Help' For A List Of Commands.\n")
+print("Welcome To FM.OS [Version 2.1]\nType 'Help' For A List Of Commands.\n")
 
 
 while True:
-	user_input = input(">>> ")
+	user_input_type = ">>> "
+	user_input = input(user_input_type)
 	command = user_input.strip().lower()
 
 	match command:
@@ -85,7 +87,8 @@ print     - Print a custom message
 color     - Change text and background colors
 search    - Ability to search in Google browser
 os        - Show FM.OS operating system specifications
-star      - Vote for the app on GitHub{Style.RESET_ALL}
+star      - Vote for the app on GitHub
+setting   - Edit Input Shape{Style.RESET_ALL}
 """)
 
 		case "shutdown":
@@ -103,7 +106,7 @@ star      - Vote for the app on GitHub{Style.RESET_ALL}
 			os.system("cls")
 
 		case "calc":
-			calc = input("CalC>> ")
+			calc = input(f"CalC{user_input_type} ")
 			result = eval(calc)
 			print(f"{Fore.LIGHTRED_EX}Result : {result}{Style.RESET_ALL}")
 
@@ -120,7 +123,7 @@ star      - Vote for the app on GitHub{Style.RESET_ALL}
 
 		case "openf":
 			files = os.listdir()
-			filer = input("Enter the name of the file to Run>> ")
+			filer = input(f"Enter the name of the file to Run{user_input_type} ")
 			if filer in files:
 				os.system(f"{filer}")
 			else:
@@ -128,16 +131,16 @@ star      - Vote for the app on GitHub{Style.RESET_ALL}
 				print(f"{Fore.RED}Invalid File Name.{Style.RESET_ALL}")
 
 		case "addf":
-			filen = input("Add New File Name (with extension)>> ").strip().lower()
-			content = input("Enter content for the file>> ")
+			filen = input(f"Add New File Name (with extension){user_input_type} ").strip().lower()
+			content = input(f"Enter content for the file{user_input_type} ")
 			with open(filen, 'w', encoding='utf-8') as f:
 				f.write(content)
 			print(f"{Fore.GREEN}Success! File '{filen}' created and content written.{Style.RESET_ALL}")
 
 		case "pcontentf":
-			filem = input("Enter file name to update content>> ").strip().lower()
+			filem = input(f"Enter file name to update content{user_input_type} ").strip().lower()
 			if os.path.exists(filem):
-				content = input("Enter NEW content>> ")
+				content = input(f"Enter NEW content{user_input_type} ")
 				with open(filem, 'w', encoding='utf-8') as f:
 					f.write(content)
 				print(f"{Fore.GREEN}File '{filem}' content updated successfully.{Style.RESET_ALL}")
@@ -146,9 +149,9 @@ star      - Vote for the app on GitHub{Style.RESET_ALL}
 				print(f"{Fore.RED}File '{filem}' does not exist.{Style.RESET_ALL}")
 
 		case "renamef":
-			old_name = input("Enter the current name of the file>> ").strip().lower()
+			old_name = input(f"Enter the current name of the file{user_input_type} ").strip().lower()
 			if os.path.exists(old_name):
-				new_name = input("Enter the new name for the file>> ").strip().lower()
+				new_name = input(f"Enter the new name for the file{user_input_type} ").strip().lower()
 				os.rename(old_name, new_name)
 				print(f"{Fore.GREEN}Success! File '{old_name}' has been renamed to '{new_name}'.{Style.RESET_ALL}")
 			else:
@@ -156,7 +159,7 @@ star      - Vote for the app on GitHub{Style.RESET_ALL}
 				print(f"{Fore.RED}Error: Source file '{old_name}' not found. Cannot rename.{Style.RESET_ALL}")
 
 		case "readf":
-			filear = input("Enter the name of the file to read>> ").strip().lower()
+			filear = input(f"Enter the name of the file to read{user_input_type} ").strip().lower()
 			if os.path.exists(filear):
 				with open(filear, 'r', encoding='utf-8') as f:
 					print(f.read())
@@ -165,7 +168,7 @@ star      - Vote for the app on GitHub{Style.RESET_ALL}
 				print(f"{Fore.RED}Error: File '{filear}' does not exist.{Style.RESET_ALL}")
 
 		case "removef":
-			filetd = input("Enter file name to delete>> ")
+			filetd = input(f"Enter file name to delete{user_input_type} ")
 			if os.path.exists(filetd):
 				os.remove(filetd)
 				print(f"{Fore.GREEN}Success: File '{filetd}' has been deleted.{Style.RESET_ALL}")
@@ -178,7 +181,7 @@ star      - Vote for the app on GitHub{Style.RESET_ALL}
 				print(f"{Fore.YELLOW}{proc.info}{Style.RESET_ALL}")
 
 		case "taskkill":
-			pidtk = input("PIDtk>> ")
+			pidtk = input(f"PIDtk{user_input_type} ")
 			if pidtk.isdigit():
 				p = psutil.Process(int(pidtk))
 				p.terminate()
@@ -227,7 +230,7 @@ CPU Frequency: {psutil.cpu_freq().current:.2f} MHz
 			print(Style.RESET_ALL)
 
 		case "wifip":
-			WiFi_Name = input("WiFi Name>> ").strip().lower()
+			WiFi_Name = input(f"WiFi Name{user_input_type} ").strip().lower()
 			wifi_password = (f' netsh wlan show profile name = "{WiFi_Name}" key=clear | findstr "Key Content" ')
 			print(Fore.LIGHTMAGENTA_EX)
 			os.system(wifi_password)
@@ -235,7 +238,7 @@ CPU Frequency: {psutil.cpu_freq().current:.2f} MHz
 
 		case "game":
 			print(f"{Fore.LIGHTBLUE_EX}list games : deadshot | shilter | sloperun | slingdrift | pong | sonic | pacmac")
-			game = input(f"Select the game>> {Style.RESET_ALL}")
+			game = input(f"Select the game{user_input_type} {Style.RESET_ALL}")
 			game = game.lower().strip()
 			if game == "deadshot":
 				webbrowser.open("https://deadshot.io/")
@@ -256,25 +259,25 @@ CPU Frequency: {psutil.cpu_freq().current:.2f} MHz
 				print(f"{Fore.RED}game not found!{Style.RESET_ALL}")
 
 		case "sound":
-			sinput = input("text to audio>>")
+			sinput = input(f"text to audio{user_input_type}")
 			sound1 = pyttsx3.init()
 			sound1.setProperty("rate" , 140)
 			sound1.say(sinput)
 			sound1.runAndWait()
 
 		case "title":
-			newt = input("new title>> ")
+			newt = input(f"new title{user_input_type} ")
 			os.system(f"title {newt}")
 
 		case "echo" | "print":
-			ep = input("ep>> ")
+			ep = input(f"ep{user_input_type} ")
 			print(ep)
 
 		case "color":
 			colort = Fore.RESET
 			colorb = Back.RESET
 			print("\nAvailable colors:\nText Colors: red , green , blue , reset\nBackground Colors: bg_red , bg_green , bg_blue , reset\n")
-			color = input("color>> ").strip().lower()
+			color = input(f"color{user_input_type} ").strip().lower()
 			if color == "red":
 				colort = Fore.RED
 			elif color == "green":
@@ -302,9 +305,9 @@ CPU Frequency: {psutil.cpu_freq().current:.2f} MHz
 			os.system("cls")
 
 		case "search":
-			search = input("SEARCH>> ")
+			search = input(f"SEARCH{user_input_type} ")
 			if "http" in search.lower():
-   				fs = search
+				fs = search
 			else:
 				fs =  "https://www.google.com/search?q=" + quote(search)
 			webbrowser.open(fs)
@@ -317,6 +320,8 @@ Developer name : SHAYAN-FM{Style.RESET_ALL}""")
 		case "star":
 			github = "https://github.com/SHAYAN-FM/FM.OS.PY.git"
 			webbrowser.open(github)
+		case "settings":
+			user_input_type = input(f"please add new command line(reverse with {user_input_type}){user_input_type}")
 
 		case "":
 			pass
